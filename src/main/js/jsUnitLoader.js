@@ -48,8 +48,8 @@ function createTestSuite(name) {
     //
 
     var obj = eval("new " + testName + "();");
-    var suite = new jsUnitTestSuite(testName, obj);    
-    
+    var suite = new jsUnitTestSuite(testName, obj);
+
     return suite;
 }
 

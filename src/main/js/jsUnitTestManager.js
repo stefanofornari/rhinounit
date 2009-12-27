@@ -118,12 +118,12 @@ jsUnitTestManager.prototype.getTestFunctionNames = function ()
 jsUnitTestManager.prototype.executeTestFunction = function (f) 
 {
     this._testFunctionName=f.name;
-    this.setStatus('Running test "' + f.name + '"');
+    this.setStatus('Running test "' + this._testFunctionName + '"');
     var excep=null;
     var timeBefore = new Date();
     try {
         // TBD setUp() -- this.containerTestFrame.setUp();
-        f();
+        this._currentSuite()[this._testFunctionName]();
     }
     catch (e1) {
         excep = e1;
@@ -186,7 +186,7 @@ jsUnitTestManager.prototype._problemDetailMessageFor = function (excep)
         if (excep.comment != null)
             result+=('"'+excep.comment+'"\n');
     
-        result += excep.jsUnitMessage;
+        result += excep.description;
     
         if (excep.stackTrace)
             result+='\n\nStack trace follows:\n'+excep.stackTrace;
@@ -209,71 +209,6 @@ jsUnitTestManager.prototype.setStatus = function (str)
     println("setStatus: " + str);
 }
 
-jsUnitTestManager.prototype._setErrors = function (n)
-{
-    println("setErrors: " + n);
-}
-
-jsUnitTestManager.prototype._setFailures = function (n)
-{
-    println("setFailures: " + n);
-}
-
-jsUnitTestManager.prototype._setTotal = function (n)
-{
-    println("setTotal: " + n);
-}
-
-jsUnitTestManager.prototype._setProgressBarImage = function (imgName)
-{
-    this.progressBar.src=imgName;
-}
-
-jsUnitTestManager.prototype._setProgressBarWidth = function (w)
-{
-    this.progressBar.width=w;
-}
-
-jsUnitTestManager.prototype.showMessageForSelectedProblemTest = function ()
-{
-    var problemTestIndex = this.problemsListField.selectedIndex;
-    if (problemTestIndex != -1)
-        alert(this.problemsListField[problemTestIndex].value);
-}
-
-jsUnitTestManager.prototype.showMessagesForAllProblemTests = function ()
-{
-    if (this.problemsListField.length == 0)
-        return;
-
-    try
-    {
-        if (this._windowForAllProblemMessages && !this._windowForAllProblemMessages.closed)
-            this._windowForAllProblemMessages.close();
-    }
-    catch(e)
-    {
-    }
-
-    this._windowForAllProblemMessages = window.open('','','width=600, height=350,status=no,resizable=yes,scrollbars=yes');
-    var resDoc = this._windowForAllProblemMessages.document;
-    resDoc.write('<html><head><link rel="stylesheet" href="../css/jsUnitStyle.css"><title>Tests with problems - JsUnit<\/title><head><body>');
-    resDoc.write('<p class="jsUnitSubHeading">Tests with problems (' + this.problemsListField.length + ' total) - JsUnit<\/p>');
-    resDoc.write('<p class="jsUnitSubSubHeading"><i>Running on '+navigator.userAgent+'</i></p>');
-    for (var i = 0; i < this.problemsListField.length; i++)
-    {
-        resDoc.write('<p class="jsUnitDefault">');
-        resDoc.write('<b>' + (i + 1) + '. ');
-        resDoc.write(this.problemsListField[i].text);
-        resDoc.write('<\/b><\/p><p><pre>');
-        resDoc.write(this.problemsListField[i].value);
-        resDoc.write('<\/pre><\/p>');
-    }
-
-    resDoc.write('<\/body><\/html>');
-    resDoc.close();
-}
-
 jsUnitTestManager.prototype.initialize = function ()
 {
     this.setStatus('Initializing...');
@@ -281,10 +216,6 @@ jsUnitTestManager.prototype.initialize = function ()
 }
 
 jsUnitTestManager.prototype.finalize = function ()
-{
-}
-
-jsUnitTestManager.prototype._setRunButtonEnabled = function (b)
 {
 }
 

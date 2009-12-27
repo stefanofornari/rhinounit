@@ -214,7 +214,7 @@ function parseErrorStack(excp)
 function JsUnitException(comment, message) {
   this.isJsUnitException = true;
   this.comment           = comment;
-  this.jsUnitMessage     = message;
+  this.description       = message;
   this.stackTrace        = getStackTrace();
 }
 

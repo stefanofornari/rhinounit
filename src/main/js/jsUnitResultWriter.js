@@ -71,7 +71,7 @@ jsUnitResultWriter.prototype.writeError = function (result) {
 
     var exception = result.error;
     var name = exception.name;
-
+    
     if (typeof(exception.isJsUnitException) != 'undefined'
             && exception.isJsUnitException) {
         name = "jsUnitException";
@@ -82,6 +82,9 @@ jsUnitResultWriter.prototype.writeError = function (result) {
                + name
                + '">'
                );
+    if (exception.fileName) {
+        this._write(exception.fileName + ":" + exception.lineNumber);
+    }
     this._write(result.details);
     this._write("</" + type + ">");
 }
