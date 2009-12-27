@@ -80,7 +80,7 @@ var dir = new java.io.File(arguments[0]);
 if (dir.exists()) {
     var lst = dir.list();
     if (lst != null) {
-        for (var i=0; i < lst.length; i++) {
+        for (var i in lst) {
             executeTestSuite(lst[i]);
         }
     }

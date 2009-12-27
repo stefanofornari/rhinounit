@@ -15,6 +15,7 @@ jsUnitTestManager.prototype.setup = function () {
 
 jsUnitTestManager.prototype.start = function () {
     this.timeRunStarted = new Date();
+
     this.initialize();
     this._nextTest();
 }
@@ -45,29 +46,21 @@ jsUnitTestManager.prototype._done = function () {
 }
 
 jsUnitTestManager.prototype._nextTest = function () {
-    println("CHECK0");
     if (this._currentSuite().hasMoreTests()) {
-        println("CHECK0.1");
         this._runTest(this._currentSuite().nextTest());
-        println("CHECK0.2");
     } else {
-        println("CHECK1");
         this._currentSuite().elapsedTime = this._elapsed();
         var w = new jsUnitResultWriter(this._currentSuite());
         w.writeResults();
         pop(this.suiteStack);
         if (this._currentSuite() == null) {
-            println("CHECK2");
             this._done();
 
             return;
         }
     }
 
-    println("CHECK3");
     this._nextTest();
-    
-    println("CHECK5");
 }
 
 jsUnitTestManager.prototype._currentSuite = function () 
