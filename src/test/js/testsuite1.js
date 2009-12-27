@@ -1,7 +1,7 @@
 function testsuite1() {
 }
 
-testsuite1.prototype.run = function run(successCondition) {
+testsuite1.prototype.run = function (successCondition) {
     if (successCondition == "error") {
         error("ERROR");
     } else if (successCondition == "fail") {
