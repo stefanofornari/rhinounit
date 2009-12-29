@@ -1,0 +1,54 @@
+<!--
+Copyright Stefano Fornari 2009
+
+This file is part of RhinoUnit.
+
+RhinoUnit is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Foobar is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+
+<assembly>
+   <id>bin</id>
+   <formats>
+        <format>zip</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+
+    <fileSets>
+        <fileSet>
+            <directory>src/main/js</directory>
+            <outputDirectory>${artifactId}-${version}</outputDirectory>
+            <includes>
+                <include>**/*</include>
+            </includes>
+        </fileSet>
+        <fileSet>
+            <directory>src/main/resources</directory>
+            <outputDirectory>${artifactId}-${version}</outputDirectory>
+            <includes>
+                <include>licenses/</include>
+            </includes>
+        </fileSet>
+    </fileSets>
+
+<!--
+    <files>
+        <file>
+            <source>src/main/chrome/install.rdf</source>
+            <outputDirectory></outputDirectory>
+            <filtered>true</filtered>
+        </file>
+    </files>
+-->
+</assembly>
