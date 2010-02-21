@@ -31,15 +31,15 @@ import org.apache.commons.io.IOUtils;
  * @author Stefano Fornari
  */
 public class RhinoUnitLoader {
-
-    private static final String[] SCRIPTS = new String[]{
+    private static final String[] SCRIPTS = new String[] {
         "/js/jsUnitCore.js",
         "/js/xbDebug.js",
         "/js/jsUnitResult.js",
         "/js/jsUnitResultWriter.js",
         "/js/jsUnitTestManager.js",
         "/js/jsUnitTestSuite.js",
-        "/js/jsUnitTracer.js"
+        "/js/jsUnitTracer.js",
+        "/js/jsUnitRunner.js"
     };
 
     public RhinoUnitLoader() {
@@ -54,13 +54,13 @@ public class RhinoUnitLoader {
      *
      * @throws IOException if the framework could not be loaded from classpath
      */
-    public String getRhinoUnit() throws IOException {
+    public static String getRhinoUnit() throws IOException {
         StringBuffer ret = new StringBuffer();
 
         InputStream is = null;
         for (int i=0; i<SCRIPTS.length; ++i) {
             try {
-                is = getClass().getResourceAsStream(SCRIPTS[i]);
+                is = RhinoUnitLoader.class.getResourceAsStream(SCRIPTS[i]);
                 if (is == null) {
                     throw new FileNotFoundException("Resource " + SCRIPTS[i] + " not found in classpath");
                 }
