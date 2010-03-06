@@ -199,7 +199,7 @@ jsUnitTestManager.prototype._problemDetailMessageFor = function (excep)
 
 jsUnitTestManager.prototype.setStatus = function (str)
 {
-    println("setStatus: " + str);
+    println("> " + str);
 }
 
 jsUnitTestManager.prototype.initialize = function ()
