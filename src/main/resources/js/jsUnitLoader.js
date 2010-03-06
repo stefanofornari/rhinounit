@@ -1,42 +1,32 @@
 /*
-Copyright Stefano Fornari 2009
+  Copyright Stefano Fornari 2009
 
-This file is part of RhinoUnit.
+  This file is part of RhinoUnit.
 
-RhinoUnit is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
+  RhinoUnit is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
 
-Foobar is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
+  RhinoUnit is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License
-along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+  You should have received a copy of the GNU General Public License
+  along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 
 importPackage(java.io);
-importPackage(java.lang);
 
-var rhinounitDir = System.getProperty("rhinounit.home", ".");
-
-load(rhinounitDir + File.separator + 'xbDebug.js');
-load(rhinounitDir + File.separator + 'jsUnitCore.js');
-load(rhinounitDir + File.separator + 'jsUnitParamUtils.js');
-load(rhinounitDir + File.separator + 'jsUnitTestManager.js');
-load(rhinounitDir + File.separator + 'jsUnitTestSuite.js');
-load(rhinounitDir + File.separator + 'jsUnitTracer.js');
-load(rhinounitDir + File.separator + 'jsUnitResultWriter.js');
-load(rhinounitDir + File.separator + 'jsUnitResult.js');
+var RhinoUnitLoader = Packages.com.funambol.rhinounit.RhinoUnitLoader;
+eval(String(RhinoUnitLoader.getRhinoUnit()));
 
 /**
  * prints the options for JSDoc
 */
-function printOptions()
-{
+function printOptions() {
     print("Syntax:\n");
     print("jsUnitLoader [-Drhinounit.home=<rhinounit home>] <test directory>\n");
 }
