@@ -21,7 +21,7 @@ along with Foobar.  If not, see <http://www.gnu.org/licenses />.
     <groupId>funambol</groupId>
     <artifactId>rhinounit</artifactId>
     <packaging>jar</packaging>
-    <version>0.0.1</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>Rhino unit test framework</name>
 
     <scm>
